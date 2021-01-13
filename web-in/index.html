@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Minecraft Admin Interface</title>
+</head>
+
+<body>
+	<h1>Create a server</h1>
+	<form method="post" action="">
+		<fieldset>
+			<legend>Which type of server do you want to deploy?</legend>
+			<input type="checkbox" name="srvType" value="vanilla" onclick="return validateServerSelection(0);">Vanilla <br>
+			<input type="checkbox" name="srvType" value="paper"   onclick="return validateServerSelection(0);">Paper   <br>
+			<input type="checkbox" name="srvType" value="spigot"  onclick="return validateServerSelection(0);">Spigot  <br><br>
+		</fieldset> <br>
+		<fieldset >
+			<legend>Please enter a name for the server</legend>
+			<input type="text" name="srvName" placeholder="myServer4" minlength="3" maxlength="12" pattern="[A-Za-z 0-9 _\\.\\-\\.]+" title="letters, numbers, _ and - only. " required>
+		</fieldset> <br>
+		<fieldset>
+			<legend>How much memory do you want to allocate for the server (in GBs)?</legend>
+			<input type="number" name="srvMem" placeholder="3" required>
+		</fieldset> <br>
+		<input type="submit" value="build!" onclick="return validateServerSelection(1);">
+	</form>
+</body>
+
+<script type="text/javascript">
+	/* validateServerSelection(int e); where 'e' == 0 or '1' */
+	function validateServerSelection(e) { 
+	    var checkboxes = document.getElementsByName("srvType"),
+	   		numberOfCheckedItems = 0,
+	   		i = 0;
+	    
+	    for(i; i < checkboxes.length; i++) {
+	        if(checkboxes[i].checked)  
+	            numberOfCheckedItems++;
+	    }
+
+	    if (e == 0) { 
+		    if (numberOfCheckedItems > 1) { return false; }	// Called to validate that no more than one checkbox is selected
+	    } else if (e == 1) {
+			if (numberOfCheckedItems ==0) { return false; } // Called to validate whether any checbox was selected. 
+	    }
+	}
+</script>
+
+</html>

@@ -1,0 +1,9 @@
+https://aikar.co/2018/07/02/tuning-the-jvm-g1gc-garbage-collector-flags-for-minecraft/
+
+Generate config
+send message
+start server - java -Xmx1024M -Xms1024M -jar minecraft_server.1.16.4.jar nogui 
+stop server
+
+to view a detatched tmux session by name:
+tmux attach-session -t:test_server
